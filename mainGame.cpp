@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 
 using namespace std;
 
@@ -6,6 +6,7 @@ char matrix[4][4] = { {'0', '0', '0', '0'}, {'0', '1', '2', '3'}, {'0', '4', '5'
 char mark = 'x';
 int turn = 0;
 
+// Khởi tạo phiên chơi mới
 void initNewGame()
 {
     char tmp[4][4] = { {'0', '0', '0', '0'}, {'0', '1', '2', '3'}, {'0', '4', '5', '6'}, {'0', '7', '8', '9'} };
@@ -14,6 +15,7 @@ void initNewGame()
     turn = 0;
 }
 
+// Hiện thị lên màn hình 
 void display(string res)
 {
     system("cls");
@@ -44,6 +46,7 @@ void display(string res)
         cout << endl << "Draw!";
 }
 
+// Thực hiện đánh vào ô pos
 bool makeMove(short pos)
 {
     if (pos % 3 != 0) {
@@ -59,6 +62,7 @@ bool makeMove(short pos)
     return false;
 }
 
+// Thực hiện kiểm tra hàng thứ row
 short checkRow(int row)
 {
     char mark = min(min(matrix[row][1], matrix[row][2]), matrix[row][3]);
@@ -74,6 +78,7 @@ short checkRow(int row)
     return -1;
 }
 
+// Thực hiện kiểm tra cột thứ col
 short checkCol(int col)
 {
     char mark = min(min(matrix[1][col], matrix[2][col]), matrix[3][col]);
@@ -89,6 +94,7 @@ short checkCol(int col)
 
 }
 
+// Thực hiện kiểm tra đường chéo thứ nhất
 short checkFirstDiagonalLine()
 {
     char mark = min(min(matrix[1][1], matrix[2][2]), matrix[3][3]);
@@ -102,6 +108,7 @@ short checkFirstDiagonalLine()
     return -1;
 }
 
+// Thực hiện kiểm tra đường chéo thứ hai
 short checkSecondDiagonalLine()
 {
     char mark = min(min(matrix[1][3], matrix[2][2]), matrix[3][1]);
@@ -115,6 +122,7 @@ short checkSecondDiagonalLine()
     return -1;
 }
 
+// Thực hiện kiểm tra kết quả ván đấu
 short checkForWin()
 {
     short res = max(checkFirstDiagonalLine(), checkSecondDiagonalLine());
@@ -135,6 +143,7 @@ short checkForWin()
     return res;
 }
 
+// Bắt đầu màn chơi
 void startPVP()
 {
     char isAgain = 0;
